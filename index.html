@@ -5,68 +5,133 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>BTCswap — быстрый конвертер BTC ↔ ETH</title>
 <meta name="description" content="Мини-конвертер криптовалют: курс биткойна к эфиру в реальном времени, калькулятор обмена, перевод за 5-15 минут."/>
-<link rel="icon" href="data:," />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs/%3E%3Crect width='100' height='100' rx='20' fill='%23f7931a'/%3E%3Ccircle cx='50' cy='50' r='34' fill='%23fff'/%3E%3Ctext x='50' y='50' dy='.36em' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='38' fill='%23f7931a'%3EB%E2%A4%B2%3C/text%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="BTCswap mini"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:title" content="BTCswap — быстрый конвертер BTC ↔ ETH"/>
+<meta property="og:description" content="Онлайн-курс биткойна к эфиру в реальном времени. Обмен за 5–15 минут, без регистрации."/>
+<meta property="og:url" content="https://kalifandra007.github.io/btcswap-mini/"/>
+<meta property="og:image" content="https://kalifandra007.github.io/btcswap-mini/og-image.png"/>
+<meta property="og:image:secure_url" content="https://kalifandra007.github.io/btcswap-mini/og-image.png"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="BTCswap: BTC → ETH за 5–15 минут"/>
+
+<!-- Twitter Summary Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="BTCswap — быстрый конвертер BTC ↔ ETH"/>
+<meta name="twitter:description" content="Онлайн-курс биткойна к эфиру в реальном времени. Обмен за 5–15 минут, без регистрации."/>
+<meta name="twitter:image" content="https://kalifandra007.github.io/btcswap-mini/og-image.png"/>
+
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"BTCswap mini-converter","about":"Конвертер BTC и ETH"}
 </script>
 <style>
-  :root { --brand:#f7931a; --dark:#23272f; --paper:#ffffff; --soft:#f6f7f9; --mut:#6b7280; }
+  :root { --brand:#f7931a; --dark:#23272f; --paper:#ffffff; --soft:#f6f7f9; --mut:#6b7280; --green:#16a34a; --green-dark:#15803d; }
   * { box-sizing:border-box; }
   body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; margin:0; background:var(--soft); color:var(--dark); }
-  header { background:linear-gradient(135deg,#f7931a 0%,#ffb454 100%); color:#fff; padding:28px 16px 22px; text-align:center; }
+  header { background:linear-gradient(135deg,#f7931a 0%,#ffb454 100%); color:#fff; padding:26px 16px 24px; text-align:center; }
   header h1 { margin:0; font-size:clamp(22px, 4vw, 30px); letter-spacing:.5px; }
-  header p { margin:6px 0 0; opacity:.92; font-size:14px; }
-  main { max-width:430px; margin:0 auto; padding:18px 14px 8px; }
-  .converter-card { background:var(--paper); border-radius:16px; padding:14px; box-shadow:0 6px 24px rgba(35,39,47,.10); }
-  iframe { width:100%; min-height:520px; border:0; border-radius:12px; }
+  header p.tagline { margin:6px 0 0; opacity:.92; font-size:14px; }
+
+  /* HERO CTA */
+  .hero { margin:18px auto 0; max-width:430px; }
+  .hero-btn { display:block; width:fit-content; margin:0 auto; background:var(--green); color:#fff !important;
+      padding:15px 30px; border-radius:14px; text-decoration:none; font-size:17px; font-weight:700;
+      letter-spacing:.3px; box-shadow:0 6px 18px rgba(22,163,74,.45), inset 0 1px 0 rgba(255,255,255,.25);
+      transition:background .15s ease, transform .08s ease; }
+  .hero-btn:hover { background:var(--green-dark); }
+  .hero-btn:focus-visible { outline:3px solid #fff; outline-offset:2px; }
+  .hero-arrow { font-weight:700; padding:0 2px; }
+  .hero-note { font-size:12px; margin:8px 0 0; opacity:.95; }
+  .hero-hint { font-size:12px; margin:4px 0 0; opacity:.85; }
+
+  main { max-width:430px; margin:0 auto; padding:16px 14px 8px; }
+
+  /* course-preview card */
+  .preview-head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:0 0 8px; }
+  .preview-title { font-size:13px; font-weight:600; color:var(--mut); text-transform:uppercase; letter-spacing:.06em; }
+  .preview-badge { font-size:11px; color:var(--green-dark); background:#e8f7ee; border-radius:999px; padding:3px 10px; white-space:nowrap; }
+  .converter-card { background:var(--paper); border-radius:16px; padding:12px 12px 8px; box-shadow:0 6px 24px rgba(35,39,47,.10); }
+  .calculator-wrap { width:min(100%, 352px); margin:0 auto; }
+  iframe { width:100%; min-height:520px; border:0; border-radius:12px; display:block; }
+
   .how { background:transparent; margin:20px 0 0; padding:0 4px; }
   .how ol { margin:8px 0 0; padding-left:20px; color:var(--mut); font-size:14px; line-height:1.55; }
   .how li { margin-bottom:4px; }
   .faq-q { font-weight:600; margin-top:12px; font-size:14px; color:var(--dark); }
   .faq-a { color:var(--mut); font-size:14px; line-height:1.5; margin:2px 0 0; }
   .cta-row { margin:20px 0 6px; text-align:center; }
-  .cta-btn { display:inline-block; background:var(--dark); color:#fff; padding:12px 22px; border-radius:24px; text-decoration:none; font-size:15px; font-weight:600; }
   .cta-sub { font-size:12px; color:var(--mut); margin-top:8px; }
   footer { text-align:center; color:var(--mut); font-size:12px; padding:18px 12px 26px; }
   footer a { color:inherit; }
+
+  @media (max-width: 480px) {
+    .hero-btn { width:100%; max-width:430px; padding:16px 20px; }
+  }
 </style>
 </head>
 <body>
 <header>
   <h1>BTCswap — конвертер BTC ↔ ETH</h1>
-  <p>Курс в реальном времени · калькулятор обмена · без лишних шагов</p>
+  <p class="tagline">Курс в реальном времени · калькулятор обмена · без лишних шагов</p>
+
+  <!-- HERO CTA (FIX-2: prominent, attributable pretty-link) -->
+  <div class="hero">
+    <a class="hero-btn" id="hero-cta"
+       href="https://changelly.com/?from=btc&amp;to=eth&amp;amount=0.1&amp;ref_id=PwbEeqCJOHmvYkw4"
+       rel="nofollow noopener" aria-label="Обменять BTC на ETH на Changelly">
+      Обменять BTC&nbsp;<span class="hero-arrow">→</span>&nbsp;ETH
+    </a>
+    <p class="hero-note"><strong>Курсы онлайн</strong> · перевод обычно за 5–15 минут</p>
+    <p class="hero-hint">Калькулятор курса — ниже на этой странице ↓</p>
+  </div>
 </header>
 
 <main>
-  <section class="converter-card">
-    <iframe src="https://widget.changelly.com/?merchant_id=PwbEeqCJOHmvYkw4&fromDefault=btc&toDefault=eth&amount=0.1"
-            title="Обменник BTC в ETH" onload="this.style.height=Math.max(this.contentWindow?0:0,this.offsetHeight)+'px'"></iframe>
+  <!-- COURSE PREVIEW (FIX-2: iframe demoted to decorative calculator-preview) -->
+  <div class="preview-head">
+    <span class="preview-title">Курс-превью</span>
+    <span class="preview-badge">обновляется онлайн</span>
+  </div>
+  <section class="converter-card" aria-label="Предпросмотр калькулятора обмена">
+    <div class="calculator-wrap">
+      <iframe src="https://widget.changelly.com/?merchant_id=PwbEeqCJOHmvYkw4&fromDefault=btc&toDefault=eth&amount=0.1"
+              title="Курс-превью BTC к ETH (калькулятор)" tabindex="-1" aria-hidden="true"></iframe>
+    </div>
   </section>
 
   <section class="how">
     <div class="faq-q">Как это работает?</div>
     <ol>
-      <li>Введите сумму и проверьте курс — он подтягивается онлайн.</li>
-      <li>Укажите адрес кошелька-получателя и подтвердите обмен.</li>
-      <li>Переведите BTC со своего кошелька. Обычно 5–15 минут после подтверждения сети.</li>
+      <li>Посмотрите примерный курс в калькуляторе-превью выше — он считается онлайн.</li>
+      <li>Нажмите большую зелёную кнопку «Обменять BTC → ETH» наверху страницы.</li>
+      <li>На открывшейся странице укажите адрес кошелька-получателя и подтвердите обмен.</li>
+      <li>Отправьте BTC со своего кошелька — ETH обычно приходит через 5–15 минут после подтверждения сетью.</li>
     </ol>
     <div class="faq-q">Что за курс я вижу?</div>
-    <p class="faq-a">Комбинированную рыночную котировку BTC/ETH крупных биржей плюс комиссию сервиса — то число, которое реально получите на кошелёк.</p>
+    <p class="faq-a">Комбинированную рыночную котировку BTC/ETH крупных бирж плюс комиссию сервиса — то число, которое реально получите на кошелёк.</p>
+    <div class="faq-q">Это калькулятор или сразу обмен?</div>
+    <p class="faq-a">И то и другое: поле снизу показывает живой курс и пересчитывает суммы, а сама сделка открывается большой зелёной кнопкой сверху — там вводятся адреса и подтверждаются детали.</p>
     <div class="faq-q">Можно поменять обратно, ETH → BTC?</div>
-    <p class="faq-a">Да, просто переключите монеты местами в форме выше.</p>
+    <p class="faq-a">Да, просто переключите монеты местами на странице обмена.</p>
     <div class="faq-q">Безопасно ли это?</div>
     <p class="faq-a">Обмен проходит через крупный давно работающий swap-сервис (Changelly), мы сами пользуемся этим конвертером.</p>
   </section>
 
   <div class="cta-row">
-    <a class="cta-btn" href="https://changelly.com/?from=btc&to=eth&amount=0.1&ref_id=PwbEeqCJOHmvYkw4" rel="nofollow noopener">Открыть полную версию ↗</a>
-    <p class="cta-sub">Все пары монет, покупка картой и подробная история транзакций</p>
+    <p class="cta-sub">Откройте страницу обмена кнопкой сверху ↑<br/>Все пары монет, покупка картой и подробная история транзакций</p>
   </div>
 </main>
 
 <footer>
-  © 2026 BTCswap mini · Конвертер использует технологию <a href="https://changelly.com/?from=btc&to=eth&amount=0.1&ref_id=PwbEeqCJOHmvYkw4" rel="nofollow noopener">Changelly</a><br/>
-  Не является финансовой консультацией. Курсы и лимиты могут меняться вместе с рынком.
+  © 2026 BTCswap mini · Конвертер использует технологию <a href="https://changelly.com/?from=btc&amp;to=eth&amp;amount=0.1&amp;ref_id=PwbEeqCJOHmvYkw4" rel="nofollow noopener">Changelly</a><br/>
+  Не является финансовой рекомендацией. Курсы и лимиты могут меняться вместе с рынком.
 </footer>
 </body>
 </html>
