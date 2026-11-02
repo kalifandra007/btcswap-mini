@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>BTCswap — быстрый конвертер BTC ↔ ETH</title>
+<meta name="description" content="Мини-конвертер криптовалют: курс биткойна к эфиру в реальном времени, калькулятор обмена, перевод за 5-15 минут."/>
+<link rel="icon" href="data:," />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"BTCswap mini-converter","about":"Конвертер BTC и ETH"}
+</script>
+<style>
+  :root { --brand:#f7931a; --dark:#23272f; --paper:#ffffff; --soft:#f6f7f9; --mut:#6b7280; }
+  * { box-sizing:border-box; }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; margin:0; background:var(--soft); color:var(--dark); }
+  header { background:linear-gradient(135deg,#f7931a 0%,#ffb454 100%); color:#fff; padding:28px 16px 22px; text-align:center; }
+  header h1 { margin:0; font-size:clamp(22px, 4vw, 30px); letter-spacing:.5px; }
+  header p { margin:6px 0 0; opacity:.92; font-size:14px; }
+  main { max-width:430px; margin:0 auto; padding:18px 14px 8px; }
+  .converter-card { background:var(--paper); border-radius:16px; padding:14px; box-shadow:0 6px 24px rgba(35,39,47,.10); }
+  iframe { width:100%; min-height:520px; border:0; border-radius:12px; }
+  .how { background:transparent; margin:20px 0 0; padding:0 4px; }
+  .how ol { margin:8px 0 0; padding-left:20px; color:var(--mut); font-size:14px; line-height:1.55; }
+  .how li { margin-bottom:4px; }
+  .faq-q { font-weight:600; margin-top:12px; font-size:14px; color:var(--dark); }
+  .faq-a { color:var(--mut); font-size:14px; line-height:1.5; margin:2px 0 0; }
+  .cta-row { margin:20px 0 6px; text-align:center; }
+  .cta-btn { display:inline-block; background:var(--dark); color:#fff; padding:12px 22px; border-radius:24px; text-decoration:none; font-size:15px; font-weight:600; }
+  .cta-sub { font-size:12px; color:var(--mut); margin-top:8px; }
+  footer { text-align:center; color:var(--mut); font-size:12px; padding:18px 12px 26px; }
+  footer a { color:inherit; }
+</style>
+</head>
+<body>
+<header>
+  <h1>BTCswap — конвертер BTC ↔ ETH</h1>
+  <p>Курс в реальном времени · калькулятор обмена · без лишних шагов</p>
+</header>
+
+<main>
+  <section class="converter-card">
+    <iframe src="https://widget.changelly.com/?merchant_id=PwbEeqCJOHmvYkw4&fromDefault=btc&toDefault=eth&amount=0.1"
+            title="Обменник BTC в ETH" onload="this.style.height=Math.max(this.contentWindow?0:0,this.offsetHeight)+'px'"></iframe>
+  </section>
+
+  <section class="how">
+    <div class="faq-q">Как это работает?</div>
+    <ol>
+      <li>Введите сумму и проверьте курс — он подтягивается онлайн.</li>
+      <li>Укажите адрес кошелька-получателя и подтвердите обмен.</li>
+      <li>Переведите BTC со своего кошелька. Обычно 5–15 минут после подтверждения сети.</li>
+    </ol>
+    <div class="faq-q">Что за курс я вижу?</div>
+    <p class="faq-a">Комбинированную рыночную котировку BTC/ETH крупных биржей плюс комиссию сервиса — то число, которое реально получите на кошелёк.</p>
+    <div class="faq-q">Можно поменять обратно, ETH → BTC?</div>
+    <p class="faq-a">Да, просто переключите монеты местами в форме выше.</p>
+    <div class="faq-q">Безопасно ли это?</div>
+    <p class="faq-a">Обмен проходит через крупный давно работающий swap-сервис (Changelly), мы сами пользуемся этим конвертером.</p>
+  </section>
+
+  <div class="cta-row">
+    <a class="cta-btn" href="https://changelly.com/?from=btc&to=eth&amount=0.1&ref_id=PwbEeqCJOHmvYkw4" rel="nofollow noopener">Открыть полную версию ↗</a>
+    <p class="cta-sub">Все пары монет, покупка картой и подробная история транзакций</p>
+  </div>
+</main>
+
+<footer>
+  © 2026 BTCswap mini · Конвертер использует технологию <a href="https://changelly.com/?from=btc&to=eth&amount=0.1&ref_id=PwbEeqCJOHmvYkw4" rel="nofollow noopener">Changelly</a><br/>
+  Не является финансовой консультацией. Курсы и лимиты могут меняться вместе с рынком.
+</footer>
+</body>
+</html>
